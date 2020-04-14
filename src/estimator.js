@@ -2,13 +2,13 @@
 const checkPeriod = (period) => {
   const actualPeriod = 'timeToElapse';
   if (period === 'days') {
-    return actualPeriod;
+    return actualPeriod * 86400;
   }
   if (period === 'weeks') {
-    return actualPeriod * 7;
+    return actualPeriod * 64800;
   }
   if (period === 'months') {
-    return actualPeriod * 30;
+    return actualPeriod * 1944000;
   }
   return false;
 };
