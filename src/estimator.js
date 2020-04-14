@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-/* global floor */
 const checkPeriod = (data) => {
   const dateType = data.periodType;
   const actualPeriod = 'timeToElapse';
