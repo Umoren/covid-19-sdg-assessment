@@ -1,16 +1,15 @@
 /* eslint-disable linebreak-style */
-const checkPeriod = (period) => {
-  const actualPeriod = period.timeToElapse;
-  if (period === 'days') {
-    return actualPeriod * 86400;
+const checkPeriod = (data) => {
+  if (data.periodType === 'days') {
+    return data.timeToElapse;
   }
-  if (period === 'weeks') {
-    return actualPeriod * 64800;
+  if (data.periodType === 'weeks') {
+    return data.timeToElapse * 7;
   }
-  if (period === 'months') {
-    return actualPeriod * 1944000;
+  if (data.periodType === 'months') {
+    return data.timeToElapse * 30;
   }
-  return period;
+  return false;
 };
 const covid19ImpactEstimator = (data) => {
   const impact = data.reportedCases * 10;
