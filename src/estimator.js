@@ -1,14 +1,13 @@
 /* eslint-disable linebreak-style */
-const checkPeriod = (data) => {
-  const dateType = data.periodType;
+const checkPeriod = (period) => {
   const actualPeriod = 'timeToElapse';
-  if (dateType === 'days') {
+  if (period === 'days') {
     return actualPeriod;
   }
-  if (dateType === 'weeks') {
+  if (period === 'weeks') {
     return actualPeriod * 7;
   }
-  if (dateType === 'months') {
+  if (period === 'months') {
     return actualPeriod * 30;
   }
   return false;
