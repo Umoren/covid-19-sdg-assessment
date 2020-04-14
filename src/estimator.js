@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 const checkPeriod = (period) => {
-  const actualPeriod = 'timeToElapse';
+  const actualPeriod = period.timeToElapse;
   if (period === 'days') {
     return actualPeriod * 86400;
   }
@@ -10,13 +10,12 @@ const checkPeriod = (period) => {
   if (period === 'months') {
     return actualPeriod * 1944000;
   }
-  return false;
+  return period;
 };
-
 const covid19ImpactEstimator = (data) => {
   const impact = data.reportedCases * 10;
   const severe = data.reportedCases * 50;
-  const factor = Math.floor(checkPeriod(data) / 3);
+  const factor = Math.round(checkPeriod(data) / 3);
   const impactInfectionsTime = impact * 2 ** factor;
   const severeInfectionsTime = severe * 2 ** factor;
   const impactSevereInfectionsTime = (15 / 100) * impactInfectionsTime;
