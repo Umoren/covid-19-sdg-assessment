@@ -25,12 +25,12 @@ const covid19ImpactEstimator = (data) => {
   const severeHospitalBeds = Math.ceil(flooredBeds - severeSevereInfectionsTime);
   const impactIcuCases = (5 / 100) * impactInfectionsTime;
   const severeIcuCases = (5 / 100) * severeInfectionsTime;
-  const impactVentilatorCases = (2 / 100) * impactInfectionsTime;
-  const severeVentilatorCases = (2 / 100) * severeInfectionsTime;
-  const avgIncomeUSD = data.region.avgDailyIncomeInUSD;
-  const avgIncomePOP = data.region.avgDailyIncomeInPopulation;
-  const impactDollarsFlight = impactInfectionsTime * avgIncomeUSD * avgIncomePOP * checkPeriod();
-  const severeDollarsFlight = severeInfectionsTime * avgIncomeUSD * avgIncomePOP * checkPeriod();
+  const impactVentilatorCases = Math.ceil((2 / 100) * impactInfectionsTime);
+  const severeVentilatorCases = Math.ceil((2 / 100) * severeInfectionsTime);
+  const avgUSD = data.region.avgDailyIncomeInUSD;
+  const avgPOP = data.region.avgDailyIncomePopulation;
+  const impactDollarsFlight = Math.ceil(impactInfectionsTime * avgUSD * avgPOP * checkPeriod());
+  const severeDollarsFlight = Math.ceil(severeInfectionsTime * avgUSD * avgPOP * checkPeriod());
   const result = {
     data: 'data',
     impact: {
