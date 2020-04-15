@@ -21,8 +21,8 @@ const covid19ImpactEstimator = (data) => {
   const severeSevereInfectionsTime = (15 / 100) * severeInfectionsTime;
   const totalBeds = data.totalHospitalBeds;
   const flooredBeds = Math.floor(((35 / 100) * totalBeds));
-  const impactHospitalBeds = flooredBeds - Math.floor(impactSevereInfectionsTime);
-  const severeHospitalBeds = flooredBeds - Math.floor(severeSevereInfectionsTime);
+  const impactHospitalBeds = Math.floor(flooredBeds - impactSevereInfectionsTime);
+  const severeHospitalBeds = Math.floor(flooredBeds - severeSevereInfectionsTime);
   const impactIcuCases = (5 / 100) * impactInfectionsTime;
   const severeIcuCases = (5 / 100) * severeInfectionsTime;
   const impactVentilatorCases = (2 / 100) * impactInfectionsTime;
