@@ -1,17 +1,17 @@
 /* eslint-disable linebreak-style */
-const checkPeriod = (data) => {
-  if (data.periodType === 'days') {
-    return data.timeToElapse;
-  }
-  if (data.periodType === 'weeks') {
-    return data.timeToElapse * 7;
-  }
-  if (data.periodType === 'months') {
-    return data.timeToElapse * 30;
-  }
-  return false;
-};
 const covid19ImpactEstimator = (data) => {
+  const checkPeriod = () => {
+    if (data.periodType === 'days') {
+      return data.timeToElapse;
+    }
+    if (data.periodType === 'weeks') {
+      return data.timeToElapse * 7;
+    }
+    if (data.periodType === 'months') {
+      return data.timeToElapse * 30;
+    }
+    return false;
+  };
   const impact = data.reportedCases * 10;
   const severe = data.reportedCases * 50;
   const factor = Math.round(checkPeriod(data) / 3);
