@@ -15,22 +15,22 @@ const covid19ImpactEstimator = (data) => {
   const impact = data.reportedCases * 10;
   const severe = data.reportedCases * 50;
   const period = checkPeriod(data);
-  const factor = Math.floor(checkPeriod(data) / 3);
+  const factor = Math.trunc(checkPeriod(data) / 3);
   const impactInfectionsTime = impact * (2 ** factor);
   const severeInfectionsTime = severe * (2 ** factor);
-  const impactSevereInfectionsTime = Math.floor((15 / 100) * impactInfectionsTime);
-  const severeSevereInfectionsTime = Math.floor((15 / 100) * severeInfectionsTime);
+  const impactSevereInfectionsTime = Math.trunc((15 / 100) * impactInfectionsTime);
+  const severeSevereInfectionsTime = Math.trunc((15 / 100) * severeInfectionsTime);
   const totalBeds = data.totalHospitalBeds;
-  const impactHospitalBeds = Math.floor(((35 / 100) * totalBeds) - impactSevereInfectionsTime);
-  const severeHospitalBeds = Math.floor(((35 / 100) * totalBeds) - severeSevereInfectionsTime);
-  const impactIcuCases = Math.floor((5 / 100) * impactInfectionsTime);
-  const severeIcuCases = Math.floor((5 / 100) * severeInfectionsTime);
-  const impactVentilatorCases = Math.floor((2 / 100) * impactInfectionsTime);
-  const severeVentilatorCases = Math.floor((2 / 100) * severeInfectionsTime);
+  const impactHospitalBeds = Math.trunc(((35 / 100) * totalBeds) - impactSevereInfectionsTime);
+  const severeHospitalBeds = Math.trunc(((35 / 100) * totalBeds) - severeSevereInfectionsTime);
+  const impactIcuCases = Math.trunc((5 / 100) * impactInfectionsTime);
+  const severeIcuCases = Math.trunc((5 / 100) * severeInfectionsTime);
+  const impactVentilatorCases = Math.trunc((2 / 100) * impactInfectionsTime);
+  const severeVentilatorCases = Math.trunc((2 / 100) * severeInfectionsTime);
   const avgUSD = data.region.avgDailyIncomeInUSD;
   const avgPOP = data.region.avgDailyIncomePopulation;
-  const impactDollarsFlight = Math.floor(impactInfectionsTime * avgPOP * avgUSD * period);
-  const severeDollarsFlight = Math.floor(severeInfectionsTime * avgPOP * avgUSD * period);
+  const impactDollarsFlight = Math.trunc(impactInfectionsTime * avgPOP * avgUSD * period);
+  const severeDollarsFlight = Math.trunc(severeInfectionsTime * avgPOP * avgUSD * period);
   const result = {
     data: 'data',
     impact: {
